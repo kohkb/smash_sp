@@ -1,4 +1,4 @@
-module github.com/kohkb/sumida_weather
+module github.com/kohkb/smash_sp
 
 go 1.16
 
