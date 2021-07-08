@@ -15,7 +15,7 @@ limitations under the License.
 */
 package main
 
-import "github.com/kohkb/sumida_weather/cmd"
+import "github.com/kohkb/smash_sp/cmd"
 
 func main() {
 	cmd.Execute()
