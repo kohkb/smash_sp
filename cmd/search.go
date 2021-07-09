@@ -36,7 +36,7 @@ to quickly create a Cobra application.`,
 		fmt.Printf("https://www.youtube.com/results?search_query=ssbu+%s", args[0])
 		var youtubeClient gateway.YoutubeClient
 		youtubeClient.Name = "hoge"
-		youtubeClient.Method1()
+		fmt.Println(youtubeClient.Method1())
 	},
 }
 
