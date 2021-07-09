@@ -18,6 +18,7 @@ package cmd
 import (
 	"fmt"
 
+	"github.com/kohkb/smash_sp/pkg/gateway"
 	"github.com/spf13/cobra"
 )
 
@@ -33,6 +34,9 @@ This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Printf("https://www.youtube.com/results?search_query=ssbu+%s", args[0])
+		var youtubeClient gateway.YoutubeClient
+		youtubeClient.Name = "hoge"
+		youtubeClient.Method1()
 	},
 }
 
