@@ -16,8 +16,6 @@ limitations under the License.
 package cmd
 
 import (
-	"fmt"
-
 	"github.com/kohkb/smash_sp/pkg/gateway"
 	"github.com/spf13/cobra"
 )
@@ -33,10 +31,8 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Printf("https://www.youtube.com/results?search_query=ssbu+%s", args[0])
-		var youtubeClient gateway.YoutubeClient
-		youtubeClient.Name = "hoge"
-		fmt.Println(youtubeClient.Method1())
+		client := gateway.NewYoutubeClient()
+		client.SearchVideosByQuery("ssbu+robot")
 	},
 }
 
