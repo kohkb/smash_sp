@@ -16,6 +16,8 @@ limitations under the License.
 package cmd
 
 import (
+	"fmt"
+
 	"github.com/kohkb/smash_sp/pkg/gateway"
 	"github.com/spf13/cobra"
 )
@@ -32,7 +34,13 @@ This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		client := gateway.NewYoutubeClient()
-		client.SearchVideosByQuery("ssbu+robot")
+		video_list, err := client.SearchVideosByQuery("ssbu+robot")
+
+		if err != nil {
+			panic("runtime error!")
+		}
+
+		fmt.Println(video_list.ToUrl())
 	},
 }
 

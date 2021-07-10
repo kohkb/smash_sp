@@ -1,26 +1,19 @@
 package gateway
 
 import (
+	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"net/http"
 	"os"
 	"time"
+
+	"github.com/kohkb/smash_sp/pkg/domain"
 )
 
 type YoutubeClient struct {
 	BaseURL    string
 	apiKey     string
 	HTTPClient *http.Client
-}
-
-// TODO 別のパッケージへ移動させる
-type Video struct {
-	Id string
-}
-
-type VideoList struct {
-	Videos []Video
 }
 
 const (
@@ -37,7 +30,7 @@ func NewYoutubeClient() *YoutubeClient {
 	}
 }
 
-func (c *YoutubeClient) SearchVideosByQuery(query string) (*VideoList, error) {
+func (c *YoutubeClient) SearchVideosByQuery(query string) (*domain.VideoList, error) {
 	req, err := http.NewRequest("GET", fmt.Sprintf("%s/search?key=%s&q=%s&order=viewCount", c.BaseURL, c.apiKey, query), nil)
 
 	if err != nil {
@@ -52,10 +45,20 @@ func (c *YoutubeClient) SearchVideosByQuery(query string) (*VideoList, error) {
 
 	defer res.Body.Close()
 
-	body, err := ioutil.ReadAll(res.Body)
-	bodyString := string(body)
+	var data map[string]interface{}
 
-	fmt.Println(bodyString)
+	if err := json.NewDecoder(res.Body).Decode(&data); err != nil {
+		return nil, err
+	}
 
-	return nil, err
+	var video_list domain.VideoList
+
+	for _, item := range data["items"].([]interface{}) {
+		var video domain.Video
+		video.Id = item.(map[string]interface{})["id"].(map[string]interface{})["videoId"].(string)
+
+		video_list.Videos = append(video_list.Videos, video)
+	}
+
+	return &video_list, err
 }
