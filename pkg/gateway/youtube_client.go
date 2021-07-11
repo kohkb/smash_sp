@@ -31,7 +31,7 @@ func NewYoutubeClient() *YoutubeClient {
 }
 
 func (c *YoutubeClient) SearchVideosByQuery(query string) (*domain.VideoList, error) {
-	req, err := http.NewRequest("GET", fmt.Sprintf("%s/search?key=%s&q=%s&order=viewCount", c.BaseURL, c.apiKey, query), nil)
+	req, err := http.NewRequest("GET", fmt.Sprintf("%s/search?key=%s&q=%s&order=viewCount&part=snippet", c.BaseURL, c.apiKey, query), nil)
 
 	if err != nil {
 		return nil, err
@@ -56,6 +56,8 @@ func (c *YoutubeClient) SearchVideosByQuery(query string) (*domain.VideoList, er
 	for _, item := range data["items"].([]interface{}) {
 		var video domain.Video
 		video.Id = item.(map[string]interface{})["id"].(map[string]interface{})["videoId"].(string)
+
+		// videoのtitleを入れる
 
 		video_list.Videos = append(video_list.Videos, video)
 	}
