@@ -1,7 +1,9 @@
 package domain
 
 type Video struct {
-	Id string
+	Id    string
+	Title string
+	// PublishTime time.Time
 }
 
 func (v *Video) Url() string {

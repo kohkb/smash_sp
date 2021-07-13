@@ -55,9 +55,14 @@ func (c *YoutubeClient) SearchVideosByQuery(query string) (*domain.VideoList, er
 
 	for _, item := range data["items"].([]interface{}) {
 		var video domain.Video
-		video.Id = item.(map[string]interface{})["id"].(map[string]interface{})["videoId"].(string)
 
-		// videoのtitleを入れる
+		video.Id = item.(map[string]interface{})["id"].(map[string]interface{})["videoId"].(string)
+		video.Title = item.(map[string]interface{})["snippet"].(map[string]interface{})["title"].(string)
+
+		// publishTime, _ := time.Parse("2006-01-02", item.(map[string]interface{})["snippet"].(map[string]interface{})["publishTime"].(string))
+		// TODO Tをスペースに置換、Zを削除する処理を加えれば保存できる
+		// publishTime, _ := time.Parse("2006-01-02 15:04:05", "2020-02-24 01:29:35")
+		// video.PublishTime = publishTime
 
 		video_list.Videos = append(video_list.Videos, video)
 	}
