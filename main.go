@@ -15,8 +15,22 @@ limitations under the License.
 */
 package main
 
-import "github.com/kohkb/smash_sp/cmd"
+// import "github.com/kohkb/smash_sp/cmd"
+import (
+	"log"
+	"net/http"
+
+	"github.com/kohkb/smash_sp/pkg/handler"
+
+	"github.com/gorilla/mux"
+)
 
 func main() {
-	cmd.Execute()
+	// cmd.Execute()
+	r := mux.NewRouter()
+
+	// ルート(エンドポイント)
+	r.HandleFunc("/videos", handler.GetVideos).Methods("GET")
+
+	log.Fatal(http.ListenAndServe(":8000", r))
 }
