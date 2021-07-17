@@ -30,7 +30,7 @@ func NewYoutubeClient() *YoutubeClient {
 	}
 }
 
-func (c *YoutubeClient) SearchVideosByQuery(query string) (*domain.VideoList, error) {
+func (c *YoutubeClient) SearchVideosByQuery(query string) (*domain.Videos, error) {
 	req, err := http.NewRequest("GET", fmt.Sprintf("%s/search?key=%s&q=%s&order=viewCount&part=snippet", c.BaseURL, c.apiKey, query), nil)
 
 	if err != nil {
@@ -51,7 +51,7 @@ func (c *YoutubeClient) SearchVideosByQuery(query string) (*domain.VideoList, er
 		return nil, err
 	}
 
-	var video_list domain.VideoList
+	var videos domain.Videos
 
 	for _, row := range data["items"].([]interface{}) {
 		var video domain.Video
@@ -63,8 +63,8 @@ func (c *YoutubeClient) SearchVideosByQuery(query string) (*domain.VideoList, er
 		publishTime, _ := time.Parse("2006-01-02T15:04:05Z", item["snippet"].(map[string]interface{})["publishTime"].(string))
 		video.PublishTime = publishTime
 
-		video_list.Videos = append(video_list.Videos, video)
+		videos.Videos = append(videos.Videos, video)
 	}
 
-	return &video_list, err
+	return &videos, err
 }

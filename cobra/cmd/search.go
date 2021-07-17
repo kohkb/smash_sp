@@ -34,13 +34,13 @@ This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		client := gateway.NewYoutubeClient()
-		video_list, err := client.SearchVideosByQuery("ssbu+robot")
+		videos, err := client.SearchVideosByQuery("ssbu+robot")
 
 		if err != nil {
 			panic("runtime error!")
 		}
 
-		fmt.Println(video_list.ToUrl())
+		fmt.Println(videos.ToUrl())
 	},
 }
 
