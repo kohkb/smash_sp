@@ -12,9 +12,9 @@ import (
 func main() {
 	r := mux.NewRouter()
 
-	// ルート(エンドポイント)
 	r.HandleFunc("/videos/search", handler.GetVideos).Methods("GET")
-	r.HandleFunc("/videos/favorites", handler.GetVideos).Methods("GET")
+	r.HandleFunc("/videos/favorites", handler.GetFavorites).Methods("GET")
+	r.HandleFunc("/videos/favorites", handler.CreateFavorite).Methods("POST")
 
 	log.Fatal(http.ListenAndServe(":8000", r))
 }
