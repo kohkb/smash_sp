@@ -27,3 +27,9 @@ func TestCreateFavorite(t *testing.T) {
 	assert.Equal(t, favorite.VideoId, "abcdefg")
 	assert.Nil(t, err)
 }
+
+func TestDeleteFavorite(t *testing.T) {
+	// favoriteRepository, _ := NewFavoriteRepositoryImpl()
+
+	assert.Equal(t, "abcdefg", "abcdefg")
+}
