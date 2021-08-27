@@ -34,7 +34,7 @@
             }
         },
         mounted() {
-            axios.get('https://api.coindesk.com/v1/bpi/currentprice.json')
+            axios.get('http://localhost:8000/videos/favorites')
             .then(response => {
                 this.info = response.data.bpi
             })
