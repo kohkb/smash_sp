@@ -9,6 +9,8 @@ import (
 
 func GetFavorites(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
+	// TODO: Remove after vue setting
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 
 	favoriteRepository, err := repository.NewFavoriteRepositoryImpl()
 
