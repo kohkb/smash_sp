@@ -16,7 +16,8 @@ new Vue({
   mounted() {
       axios.get('http://localhost:8000/videos/favorites')
       .then(response => {
-          this.info = response.data.bpi
+          this.info = response.data
+          console.log(this.info)
       })
       .catch(error => {                
           console.log(error)
