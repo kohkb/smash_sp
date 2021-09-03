@@ -27,8 +27,8 @@ new Vue({
   },
 
   filters: {
-      currencydecimal (value) {
-          return value.toFixed(2)
+      videoUrl (value) {          
+          return 'https://www.youtube.com/embed/' + value
       }
   }
 })
