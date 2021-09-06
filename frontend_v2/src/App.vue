@@ -39,18 +39,21 @@
 
     <v-main>
       <HelloWorld/>
+      <Video/>
     </v-main>
   </v-app>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld';
+import Video from './components/Video';
 
 export default {
   name: 'App',
 
   components: {
     HelloWorld,
+    Video
   },
 
   data: () => ({
