@@ -45,14 +45,12 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
 import Video from './components/Video';
 
 export default {
   name: 'App',
 
-  components: {
-    HelloWorld,
+  components: {    
     Video
   },
 
