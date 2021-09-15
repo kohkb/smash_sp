@@ -20,8 +20,7 @@
     </v-app-bar>
 
     <v-main>      
-      <Video/>
-      <v-btn elevation="2">お気に入り解除</v-btn>
+      <Video/>      
     </v-main>
   </v-app>
 </template>

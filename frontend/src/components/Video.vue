@@ -8,8 +8,10 @@
               <span class="lighten">
                 <iframe width="560" height="315" :src="video.VideoId | videoUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
               </span>
+              <v-btn elevation="2">お気に入り解除</v-btn>
           </div>
-      </section>        
+      </section>   
+           <!-- 次は動画ごとにお気に入り解除ボタンをつける！ -->
 </template>
 
 <script>
