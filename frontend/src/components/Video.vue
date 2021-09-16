@@ -4,9 +4,16 @@
       </section>  
       <section v-else>
           <div v-if="loading">Loading...</div>
-          <div v-else v-for="(video, key) in info" :key="key" class="video">          
+          <div v-else class="video">          
+              <v-row class="lighten-4" style="height: 450px;" justify="center">
+                <v-col cols=2 v-for="(video, key) in info" :key="key">
+                    <v-card outlined tile height=315 md=8 >
+                        <iframe width="560" height="315" :src="video.VideoId | videoUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+                    </v-card>
+                </v-col>
+            </v-row>
               <span class="lighten">
-                <iframe width="560" height="315" :src="video.VideoId | videoUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+                
               </span>
               <v-btn elevation="2">お気に入り解除</v-btn>
           </div>
