@@ -9,13 +9,13 @@
                 <v-col cols=2 v-for="(video, key) in info" :key="key">
                     <v-card outlined tile height=315 md=8 >
                         <iframe width="560" height="315" :src="video.VideoId | videoUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+                        <v-btn elevation="2" v-on:click="removeFavorite">お気に入り解除</v-btn>
                     </v-card>
                 </v-col>
             </v-row>
               <span class="lighten">
                 
-              </span>
-              <v-btn elevation="2">お気に入り解除</v-btn>
+              </span>              
           </div>
       </section>   
            <!-- 次は動画ごとにお気に入り解除ボタンをつける！ -->
@@ -45,11 +45,15 @@
       })
       .finally(() => this.loading = false)
   },
-
+  methods: {
+      removeFavorite: function() {
+          console.log("hello")
+      }
+  },
   filters: {
       videoUrl (value) {          
           return 'https://www.youtube.com/embed/' + value
       }
-  }
+    }
   }
 </script>
