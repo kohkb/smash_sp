@@ -17,8 +17,7 @@
                 
               </span>              
           </div>
-      </section>   
-           <!-- 次は動画ごとにお気に入り解除ボタンをつける！ -->
+      </section>              
 </template>
 
 <script>
@@ -48,6 +47,8 @@
   methods: {
       removeFavorite: function() {
           console.log("hello")
+        //   remove用のエンドポイントを作る
+        // apiをapiディレクトリに移動する
       }
   },
   filters: {
