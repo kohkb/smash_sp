@@ -12,11 +12,11 @@ import (
 func main() {
 	r := mux.NewRouter()
 
-	r.HandleFunc("/videos/search", handler.GetVideos).Methods("GET")
-	r.HandleFunc("/videos/favorites/{id:[0-9]+}", handler.GetFavorite).Methods("GET")
-	r.HandleFunc("/videos/favorites/{id:[0-9]+}", handler.DeleteFavorite).Methods("DELETE")
-	r.HandleFunc("/videos/favorites", handler.GetFavorites).Methods("GET")
-	r.HandleFunc("/videos/favorites", handler.CreateFavorite).Methods("POST")
+	r.HandleFunc("/api/videos/search", handler.GetVideos).Methods("GET")
+	r.HandleFunc("/api/videos/favorites/{id:[0-9]+}", handler.GetFavorite).Methods("GET")
+	r.HandleFunc("/api/videos/favorites/{id:[0-9]+}", handler.DeleteFavorite).Methods("DELETE")
+	r.HandleFunc("/api/videos/favorites", handler.GetFavorites).Methods("GET")
+	r.HandleFunc("/api/videos/favorites", handler.CreateFavorite).Methods("POST")
 
 	log.Fatal(http.ListenAndServe(":8000", r))
 }
