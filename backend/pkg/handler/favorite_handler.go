@@ -59,3 +59,19 @@ func CreateFavorite(w http.ResponseWriter, r *http.Request) {
 
 	json.NewEncoder(w).Encode(&favorite)
 }
+
+func DeleteFavorite(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	w.Header().Set("Content-Type", "application/json")
+	favoriteRepository, err := repository.NewFavoriteRepositoryImpl()
+
+	if err != nil {
+		panic(err)
+	}
+
+	err = favoriteRepository.Delete(vars["id"])
+
+	if err != nil {
+		panic(err)
+	}
+}

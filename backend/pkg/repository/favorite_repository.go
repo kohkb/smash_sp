@@ -43,3 +43,13 @@ func (f *FavoriteRepositoryImpl) Create(videoId string) (*domain.Favorite, error
 
 	return &favorite, nil
 }
+
+func (f *FavoriteRepositoryImpl) Delete(favoriteId string) error {
+	var favorite domain.Favorite
+
+	if err := db.Delete(&favorite, favoriteId).Error; err != nil {
+		return err
+	}
+
+	return nil
+}

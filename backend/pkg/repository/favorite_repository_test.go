@@ -11,6 +11,14 @@ func TestNewFavoriteRepositoryImpl(t *testing.T) {
 	assert.Nil(t, err)
 }
 
+func TestFind(t *testing.T) {
+	favoriteRepository, _ := NewFavoriteRepositoryImpl()
+	favorite, err := favoriteRepository.Find("1")
+
+	assert.True(t, favorite.ID == 1)
+	assert.Nil(t, err)
+}
+
 func TestFindAll(t *testing.T) {
 	favoriteRepository, _ := NewFavoriteRepositoryImpl()
 	favorites, err := favoriteRepository.FindAll()
