@@ -4,18 +4,15 @@
       </section>  
       <section v-else>
           <div v-if="loading">Loading...</div>
-          <div v-else class="video">          
-              <v-row class="lighten-4" style="height: 450px;" justify="center">
-                <v-col cols=2 v-for="(video, key) in info" :key="key">
-                    <v-card outlined tile height=315 md=8 >
-                        <iframe width="560" height="315" :src="video.VideoId | videoUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
-                        <v-btn elevation="2" v-on:click="removeFavorite">お気に入り解除</v-btn>
+          <div v-else class="video">
+              <v-row justify="center">
+                <v-col cols=12 v-for="(video, key) in info" :key="key" sm=10 md=6 lg=6 xl=3 >
+                    <v-card height=300 class="darken-4">
+                        <iframe width="100%" height="100%" :src="video.VideoId | videoUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                                                                          
+                        <v-btn elevation="2" v-on:click="removeFavorite">お気に入り解除</v-btn>                                                
                     </v-card>
                 </v-col>
-            </v-row>
-              <span class="lighten">
-                
-              </span>              
+            </v-row>              
           </div>
       </section>              
 </template>
@@ -47,8 +44,7 @@
   methods: {
       removeFavorite: function() {
           console.log("hello")
-        //   remove用のエンドポイントを作る
-        // apiをapiディレクトリに移動する
+        //   remove用のエンドポイントを作る        
       }
   },
   filters: {
