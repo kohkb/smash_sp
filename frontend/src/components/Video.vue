@@ -33,7 +33,7 @@
       }
   },
   mounted() {
-      axios.get('http://localhost:8000/videos/favorites')
+      axios.get('/api/videos/favorites')
       .then(response => {
           this.info = response.data
           console.log(this.info)
