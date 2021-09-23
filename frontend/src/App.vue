@@ -13,22 +13,26 @@
         </v-btn>
         <v-btn icon>
           <v-icon>mdi-magnify</v-icon>
+          <SearchModal />
+          <!-- search api -->
         </v-btn>
       </v-app-bar>
     </div>
-    <v-main>
-      <v-content>
-        <v-container>
-         <router-view></router-view> 
-        </v-container>
-      </v-content>            
+    <v-main>    
+      <v-container>
+        <router-view></router-view> 
+      </v-container>      
     </v-main>
   </v-app>
 </template>
 
 <script>
+import SearchModal from './components/SearchModal';
 export default {
   name: 'App',
+  components: {
+    SearchModal
+  },
 
   data: () => ({
     //

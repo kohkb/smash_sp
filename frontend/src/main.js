@@ -12,7 +12,7 @@ Vue.use(VueRouter)
 
 const routes = [
   {path: '/', component: Video},
-  {path: '/search', component: Search}
+  {path: '/search', component: Search}  
 ]
 
 const router = new VueRouter({
