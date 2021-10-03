@@ -11,11 +11,7 @@
         <v-btn icon>
           <v-icon>mdi-heart</v-icon>
         </v-btn>
-        <v-btn icon>
-          <v-icon>mdi-magnify</v-icon>
-          <SearchModal />
-          <!-- search api -->
-        </v-btn>
+        <SearchModal />
       </v-app-bar>
     </div>
     <v-main>    
@@ -34,7 +30,7 @@ export default {
     SearchModal
   },
 
-  data: () => ({
+  data: () => ({    
     //
   }),
 };

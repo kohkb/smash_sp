@@ -1,11 +1,27 @@
 <template>
-    <v-dialog v-model="dialog" scrollable max-width="80%">
-      <v-card>
-        <v-card-title>タイトル</v-card-title>
-        <v-divider></v-divider>
-        <v-card-text height="200px"></v-card-text>
-      </v-card>
-    </v-dialog>    
+<div>
+  <v-btn icon @click.stop="dialog = true">
+    <v-icon>mdi-magnify</v-icon>                
+  </v-btn>              
+  <v-dialog
+      v-model="dialog"
+      max-width="290"
+      persistent>
+    <v-card>
+      
+      <v-form v-model="valid">
+        <v-container>
+          <v-text-field
+            v-model="query"
+            :rules="nameRules"        
+            label="検索キーワード"
+            required
+          ></v-text-field>
+        </v-container>
+      </v-form>
+    </v-card>
+    </v-dialog>  
+  </div>
 </template>
 
 <script>
